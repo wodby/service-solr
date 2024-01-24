@@ -1,0 +1,23 @@
+name: solr
+icon: solr
+type: search
+title: Solr
+hostname: solr
+containers:
+- name: solr
+  image: wodby/solr
+  ports:
+  - name: solr
+    number: 8983
+    type: tcp
+options:
+- version: '9'
+scalable: false
+labels:
+- solr
+
+volumes:
+- name: data
+  title: Data
+  path: /opt/solr/server/solr
+  size: 10
