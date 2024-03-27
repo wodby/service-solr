@@ -3,6 +3,9 @@ icon: solr
 type: search
 title: Solr
 hostname: solr
+operators:
+- service: solr-operator
+  version: 9.5.0
 containers:
 - name: solr
   image: wodby/solr
@@ -11,10 +14,16 @@ containers:
     number: 8983
     type: tcp
 options:
-- version: '9'
+- version: '9.5.0'
 scalable: false
 labels:
 - solr
+
+helm:
+  name: apache-solr
+  source: https://solr.apache.org/charts
+  chart: apache-solr/solr
+  version: v0.8.0  
 
 volumes:
 - name: data
