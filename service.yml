@@ -17,10 +17,7 @@ options:
 scalable: false
 labels:
 - solr
-operators:
-- name: operator
-  title: Solr Operator
-  service: solr-operator
+operator: solr-operator
 
 helm:
   name: apache-solr
