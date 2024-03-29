@@ -3,8 +3,6 @@ icon: solr
 type: search
 title: Solr
 hostname: solr
-operators:
-- service: solr-operator
 containers:
 - name: solr
   image: wodby/solr
