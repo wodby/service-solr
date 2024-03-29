@@ -17,13 +17,14 @@ options:
 scalable: false
 labels:
 - solr
-operator: solr-operator
+depends:
+- service: solr-operator
 
 helm:
   name: apache-solr
   source: https://solr.apache.org/charts
   chart: apache-solr/solr
-  version: v0.8.0  
+  version: v0.8.0
 
 volumes:
 - name: data
