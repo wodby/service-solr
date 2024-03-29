@@ -17,8 +17,11 @@ options:
 scalable: false
 labels:
 - solr
-depends:
-- service: solr-operator
+
+kubernetes:
+  infrastructure:
+  - name: operator
+    service: solr-operator
 
 helm:
   name: apache-solr
