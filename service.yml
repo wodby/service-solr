@@ -19,6 +19,7 @@ labels:
 kubernetes:
   infrastructure:
   - name: operator
+    title: Solr Operator
     service: solr-operator
 
 helm:
