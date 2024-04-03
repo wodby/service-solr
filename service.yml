@@ -29,6 +29,16 @@ helm:
   chart: apache-solr/solr
   version: v0.8.0
 
+
+links:
+- name: zookeeper
+  title: ZooKeeper
+  required: true
+  selectors:
+  - type: datastore
+    labels:
+    - zookeeper
+
 volumes:
 - name: data
   title: Data
