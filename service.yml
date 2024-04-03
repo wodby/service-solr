@@ -21,6 +21,7 @@ kubernetes:
   - name: operator
     title: Solr Operator
     service: solr-operator
+    version: '9.5.0'
 
 helm:
   name: apache-solr
