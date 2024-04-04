@@ -28,7 +28,9 @@ helm:
   source: https://solr.apache.org/charts
   chart: apache-solr/solr
   version: v0.8.0
-
+  values: 
+  - name: 'zk.address'
+    value: '{{links.zookeeper.host}}'
 
 links:
 - name: zookeeper
