@@ -31,8 +31,6 @@ helm:
   values: 
   - name: 'zk.address'
     value: '{{links.zookeeper.host}}'
-  - name: 'solr.labels'
-    value: []
 
 links:
 - name: zookeeper
