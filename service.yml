@@ -12,7 +12,6 @@ containers:
     type: http
 options:
 - version: '9.5.0'
-scalable: false
 labels:
 - solr
 
@@ -40,3 +39,15 @@ links:
   - type: datastore
     labels:
     - zookeeper
+
+volumes:
+- name: data
+  title: Data
+  optional: true
+  size: 5
+  helm: 
+    values:
+    - name: dataStorage.type
+      value: persistent
+    - name: dataStorage.capacity
+      value: {{volumes.data.size}}Gi
