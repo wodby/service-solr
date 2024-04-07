@@ -8,8 +8,8 @@ containers:
   image: wodby/solr
   ports:
   - name: solr
-    number: 8983
-    type: tcp
+    number: 80
+    type: http
 options:
 - version: '9.5.0'
 scalable: false
@@ -40,9 +40,3 @@ links:
   - type: datastore
     labels:
     - zookeeper
-
-volumes:
-- name: data
-  title: Data
-  path: /opt/solr/server/solr
-  size: 10
