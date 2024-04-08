@@ -51,3 +51,6 @@ volumes:
       value: persistent
     - name: dataStorage.capacity
       value: '{{volumes.data.size}}Gi'
+    - name: dataStorage.persistent.reclaimPolicy
+      value: Delete
+
