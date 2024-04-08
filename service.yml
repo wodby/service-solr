@@ -50,4 +50,4 @@ volumes:
     - name: dataStorage.type
       value: persistent
     - name: dataStorage.capacity
-      value: {{volumes.data.size}}Gi
+      value: '{{volumes.data.size}}Gi'
