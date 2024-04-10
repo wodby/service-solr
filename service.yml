@@ -28,9 +28,15 @@ helm:
   source: https://solr.apache.org/charts
   chart: apache-solr/solr
   version: v0.8.0
+  configuration:
+    labels: statefulSetOptions.labels
+    annotations: statefulSetOptions.annotations
+    env: podOptions.envVars
   values: 
   - name: 'zk.address'
     value: '{{links.zookeeper.host}}'
+  - name: 'pullPolicy'
+    value: '{{pullPolicy}}' 
 
 links:
 - name: zookeeper
