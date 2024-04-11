@@ -33,6 +33,7 @@ helm:
     annotations: statefulSetOptions.annotations
     env: podOptions.envVars
     service: '{{service.name}}-solrcloud-common'
+    resources: podOptions.resources
   values: 
   - name: 'zk.address'
     value: '{{links.zookeeper.host}}'
