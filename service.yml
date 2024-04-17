@@ -34,7 +34,9 @@ helm:
     annotations: statefulSetOptions.annotations
     env: podOptions.envVars
     ingress: 
-    - '{{service.name}}-solrcloud-common'
+    - service: 
+        name: '{{service.name}}-solrcloud-common'      
+        annotations: commonServiceOptions.annotations
     resources: podOptions.resources
   values: 
   - name: 'zk.address'
