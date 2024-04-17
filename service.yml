@@ -33,7 +33,7 @@ helm:
     labels: statefulSetOptions.labels
     annotations: statefulSetOptions.annotations
     env: podOptions.envVars
-    ingress: 
+    ingresses: 
     - service: 
         name: '{{service.name}}-solrcloud-common'      
         annotations: commonServiceOptions.annotations
