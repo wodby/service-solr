@@ -5,7 +5,6 @@ title: Solr
 hostname: solr
 containers:
 - name: solr
-  image: wodby/solr
   ports:
   - name: solr
     number: 80
