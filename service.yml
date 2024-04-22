@@ -5,6 +5,7 @@ title: Solr
 hostname: solr
 containers:
 - name: solr
+  image: solr
   ports:
   - name: solr
     number: 80
