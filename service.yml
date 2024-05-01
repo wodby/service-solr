@@ -40,6 +40,14 @@ helm:
   values: 
   - name: 'zk.address'
     value: '{{links.zookeeper.host}}'
+  - name: solrOptions.security.authenticationType
+    value: Basic
+  - name: solrOptions.security.basicAuthSecret
+    value: '{{secrets.auth}}'
+  - name: solrOptions.security.bootstrapSecurityJson
+    value: '{{secrets.security}}'
+  - name: solrOptions.security.key
+    value: security.json
 
 links:
 - name: zookeeper
@@ -49,6 +57,34 @@ links:
   - type: datastore
     labels:
     - zookeeper
+
+secrets:
+- name: auth
+  data:
+  - key: username
+    value: solr
+  - key: password
+    value: '{{password}}'   
+- name: security
+  data:
+  - key: security.json
+    value: |
+      {
+        "authentication":{
+          "class":"solr.BasicAuthPlugin",
+          "credentials":{"solr":"{{password}}"},
+          "blockUnknown": "true"
+        },
+        "authorization":{
+          "class":"solr.RuleBasedAuthorizationPlugin",
+          "permissions":[{
+            "name":"security-edit",
+            "role":"admin"
+          }],
+          "user-role":{"solr":"admin"}
+        }
+      }
+
 
 tokens:
 - name: password
