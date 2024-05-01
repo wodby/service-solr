@@ -50,6 +50,11 @@ links:
     labels:
     - zookeeper
 
+tokens:
+- name: password
+  generate:
+    regex: '[0-9a-z-]{32}'  
+
 volumes:
 - name: data
   title: Data
