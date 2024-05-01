@@ -43,9 +43,9 @@ helm:
   - name: solrOptions.security.authenticationType
     value: Basic
   - name: solrOptions.security.basicAuthSecret
-    value: '{{secrets.auth}}'
+    value: '{{service.secrets.env}}'
   - name: solrOptions.security.bootstrapSecurityJson
-    value: '{{secrets.security}}'
+    value: '{{service.secrets.env}}'
   - name: solrOptions.security.key
     value: security.json
 
@@ -58,17 +58,15 @@ links:
     labels:
     - zookeeper
 
-secrets:
-- name: auth
-  data:
-  - key: username
-    value: solr
-  - key: password
-    value: '{{password}}'   
-- name: security
-  data:
-  - key: security.json
-    value: |
+env:
+- name: username
+  value: solr
+  secret: true
+- name: password
+  value: '{{password}}'
+  secret: true
+- name: 'security.json'
+  value: |
       {
         "authentication":{
           "class":"solr.BasicAuthPlugin",
@@ -84,7 +82,7 @@ secrets:
           "user-role":{"solr":"admin"}
         }
       }
-
+  secret: true
 
 tokens:
 - name: password
