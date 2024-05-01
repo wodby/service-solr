@@ -58,7 +58,7 @@ links:
     labels:
     - zookeeper
 
-env:
+secrets:
 - name: auth
   data:
   - key: username
