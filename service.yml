@@ -13,7 +13,7 @@ containers:
     main: true    
 options:
 - version: '9'
-  tag: '9.5.0'
+  tag: '9.6.0'
 labels:
 - solr
 
