@@ -12,7 +12,8 @@ containers:
     type: http
     main: true    
 options:
-- version: '9.5'
+- version: '9'
+  tag: '9.5.0'
 labels:
 - solr
 
