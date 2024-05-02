@@ -45,10 +45,10 @@ helm:
     value: Basic
   - name: solrOptions.security.basicAuthSecret
     value: '{{service.secrets.env}}'
-  - name: solrOptions.security.bootstrapSecurityJson
+  - name: solrOptions.security.bootstrapSecurityJson.name
     value: '{{service.secrets.env}}'
-  - name: solrOptions.security.key
-    value: security.json
+  - name: solrOptions.security.bootstrapSecurityJson.key
+    value: 'security.json'
 
 links:
 - name: zookeeper
