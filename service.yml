@@ -74,7 +74,7 @@ secrets:
       {
         "authentication":{
           "class":"solr.BasicAuthPlugin",
-          "credentials":{"solr":"{{wodby_solr_hash_password}}"},
+          "credentials":{"solr":"{{wodby_solr_hash}}"},
           "blockUnknown": "true"
         },
         "authorization":{
@@ -88,9 +88,12 @@ secrets:
       }
 
 tokens:
-- name: password
+- name: solr_password
   generate:
     regex: '[0-9a-z-]{32}'  
+- name: solr_salt
+  generate:
+    regex: '[0-9a-z-]{32}'
 
 volumes:
 - name: data
