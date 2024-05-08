@@ -45,6 +45,8 @@ helm:
     value: 'none'
   - name: collectionReplicas
     value: '{{service.replicas}}'
+  - name: collection
+    value: default
 
 links:
 - name: zookeeper
