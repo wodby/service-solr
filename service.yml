@@ -35,7 +35,7 @@ helm:
       service: '{{service.name}}:8983'
     resources: resources
   values: 
-  - name: adminPassword
+  - name: auth.adminPassword
     value: '{{password}}'
   - name: zookeeper.enabled
     value: false
