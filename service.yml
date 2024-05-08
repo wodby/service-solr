@@ -43,6 +43,8 @@ helm:
     value: '{{links.zookeeper.host}}'
   - name: resourcesPreset
     value: 'none'
+  - name: collectionReplicas
+    value: '{{service.replicas}}'
 
 links:
 - name: zookeeper
