@@ -5,50 +5,44 @@ title: Solr
 hostname: solr
 containers:
 - name: solr
-  image: solr
+  image: bitnami/solr
   ports:
   - name: solr
-    number: 80
+    number: 9231
     type: http
     main: true    
+env: 
+- name: DISABLE_WELCOME_MESSAGE
+  value: 1
 options:
 - version: '9'
-  tag: '9.6.0'
+  tag: '9.6.0-debian-12-r0'
 labels:
 - solr
 
-kubernetes:
-  infrastructure:
-  - name: operator
-    title: Solr Operator
-    service: solr-operator
-    version: 'v0.8.0'
-
 helm:
-  name: apache-solr
-  source: https://solr.apache.org/charts
-  chart: apache-solr/solr
-  version: v0.8.0
+  name: bitnamicharts
+  source: oci://registry-1.docker.io/bitnamicharts/solr
+  chart: oci://registry-1.docker.io/bitnamicharts/solr
+  version: 9.1.3
   configurations:
   - name: solr
-    labels: statefulSetOptions.labels
-    annotations: statefulSetOptions.annotations
-    env: podOptions.envVars
+    labels: podLabels
+    annotations: podAnnotations
+    env: extraEnvVars
     ingresses: 
     - name: common
-      service: '{{service.name}}-solrcloud-common'
-    resources: podOptions.resources
+      service: '{{service.name}}'
+    resources: resources
   values: 
-  - name: 'zk.address'
-    value: '{{links.zookeeper.host}}'
-  - name: solrOptions.security.authenticationType
-    value: Basic
-  - name: solrOptions.security.basicAuthSecret
-    value: '{{secrets.auth.name}}'
-  - name: solrOptions.security.bootstrapSecurityJson.name
-    value: '{{secrets.security.name}}'
-  - name: solrOptions.security.bootstrapSecurityJson.key
-    value: 'security.json'
+  - name: adminPassword
+    value: '{{password}}'
+  - name: zookeeper.enabled
+    value: false
+  - name: externalZookeeper.servers
+    value: ['{{links.zookeeper.host}}']
+  - name: resourcesPreset
+    value: 'none'
 
 links:
 - name: zookeeper
@@ -59,41 +53,10 @@ links:
     labels:
     - zookeeper
 
-secrets:
-- name: auth
-  type: kubernetes.io/basic-auth
-  data:
-  - key: username
-    value: solr
-  - key: password
-    value: '{{solr_password}}'
-- name: security  
-  data:
-  - key: security.json
-    value: |
-      {
-        "authentication":{
-          "class":"solr.BasicAuthPlugin",
-          "credentials":{"solr":"{{wodby_solr_hash}}"},
-          "blockUnknown": "true"
-        },
-        "authorization":{
-          "class":"solr.RuleBasedAuthorizationPlugin",
-          "permissions":[{
-            "name":"security-edit",
-            "role":"admin"
-          }],
-          "user-role":{"solr":"admin"}
-        }
-      }
-
 tokens:
-- name: solr_password
+- name: password
   generate:
     regex: '[0-9a-z-]{32}'  
-- name: solr_salt
-  generate:
-    regex: '[0-9a-z-]{32}'
 
 volumes:
 - name: data
@@ -101,11 +64,11 @@ volumes:
   optional: true
   size: 5
   helm: 
+    labels: commonLabels
     values:
-    - name: dataStorage.type
-      value: persistent
-    - name: dataStorage.capacity
+    - name: persistence.enabled
+      value: true
+    - name: persistence.size
       value: '{{volumes.data.size}}Gi'
-    - name: dataStorage.persistent.reclaimPolicy
-      value: Delete
+
 
