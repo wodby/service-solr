@@ -66,7 +66,7 @@ secrets:
   - key: username
     value: solr
   - key: password
-    value: '{{password}}'
+    value: '{{solr_password}}'
 - name: security  
   data:
   - key: security.json
