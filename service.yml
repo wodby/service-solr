@@ -32,7 +32,7 @@ helm:
     env: extraEnvVars
     ingresses: 
     - name: common
-      service: '{{service.name}}'
+      service: '{{service.name}}:8983'
     resources: resources
   values: 
   - name: adminPassword
