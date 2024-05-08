@@ -39,8 +39,8 @@ helm:
     value: '{{password}}'
   - name: zookeeper.enabled
     value: false
-  - name: externalZookeeper.servers.0
-    value: '{{links.zookeeper.host}}'
+  - name: externalZookeeper.servers
+    value: ['{{links.zookeeper.host}}']
   - name: resourcesPreset
     value: 'none'
   - name: collectionReplicas
