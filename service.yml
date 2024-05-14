@@ -6,17 +6,20 @@ hostname: solr
 containers:
 - name: solr
   image: bitnami/solr
-  ports:
-  - name: solr
-    number: 8983
-    type: http
-    main: true    
+
 env: 
 - name: DISABLE_WELCOME_MESSAGE
   value: '1'
 options:
 - version: '9'
   tag: '9.6.0-debian-12-r0'
+routes:
+- name: solr
+  ports:
+  - name: solr
+    number: 8983
+    type: http
+    main: true    
 labels:
 - solr
 
