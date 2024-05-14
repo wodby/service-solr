@@ -13,7 +13,7 @@ env:
 options:
 - version: '9'
   tag: '9.6.0-debian-12-r0'
-routes:
+endpoints:
 - name: solr
   ports:
   - name: solr
