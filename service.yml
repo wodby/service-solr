@@ -18,8 +18,9 @@ routes:
   ports:
   - name: solr
     number: 8983
-    type: http
+    type: tcp
     main: true
+    ingress: true
 labels:
 - solr
 
