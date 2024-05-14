@@ -19,7 +19,7 @@ routes:
   - name: solr
     number: 8983
     type: http
-    main: true    
+    main: true
 labels:
 - solr
 
@@ -33,9 +33,6 @@ helm:
     labels: podLabels
     annotations: podAnnotations
     env: extraEnvVars
-    ingresses: 
-    - name: common
-      service: '{{service.name}}:8983'
     resources: resources
   values: 
   - name: auth.adminPassword
