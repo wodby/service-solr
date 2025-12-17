@@ -67,3 +67,14 @@ volumes:
       value: true
     - name: persistence.size
       value: '{{volumes.data.size}}Gi'
+
+actions:
+- name: init
+  title: Run init
+  args: 
+  - make
+  - init
+  - 'host={{service.host}}'
+  - -f
+  - /usr/local/bin/actions.mk  
+  type: post_deploy
