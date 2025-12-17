@@ -6,6 +6,11 @@ hostname: solr
 containers:
 - name: solr
   image: wodby/solr
+  env:
+  - name: ZK_HOST
+    value: '{{links.zookeeper.host}}'
+  - name: SOLR_CLOUD_PASSWORD
+    value: '{{password}}'
 
 options:
 - version: '9'
@@ -29,21 +34,8 @@ helm:
   - name: solr
     labels: podLabels
     annotations: podAnnotations
-    env: extraEnvVars
+    env: envVars
     resources: resources
-  values: 
-  - name: auth.adminPassword
-    value: '{{password}}'
-  - name: zookeeper.enabled
-    value: false
-  - name: externalZookeeper.servers
-    value: ['{{links.zookeeper.host}}']
-  - name: resourcesPreset
-    value: 'none'
-  - name: collectionReplicas
-    value: '{{service.replicas}}'
-  - name: collection
-    value: default
 
 links:
 - name: zookeeper
