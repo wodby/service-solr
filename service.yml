@@ -11,6 +11,7 @@ containers:
     value: '{{links.zookeeper.host}}'
   - name: SOLR_CLOUD_PASSWORD
     value: '{{password}}'
+    secret: true
 # make sure Kubernetes env var overridden with correct value to not break health check
   - name: SOLR_PORT
     value: '8983'
