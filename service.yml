@@ -61,7 +61,7 @@ volumes:
   optional: true
   size: 5
   helm: 
-    labels: commonLabels
+    labels: persistence.labels
     values:
     - name: persistence.enabled
       value: true
