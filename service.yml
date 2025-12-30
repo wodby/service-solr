@@ -24,7 +24,7 @@ endpoints:
   ports:
   - name: solr
     number: 8983
-    type: http
+    protocol: http
     main: true
 labels:
 - solr
