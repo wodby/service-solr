@@ -40,6 +40,8 @@ helm:
     annotations: podAnnotations
     env: envVars
     resources: resources
+    volumes: extraVolumes
+    mounts: extraVolumeMounts
 
 links:
 - name: zookeeper
