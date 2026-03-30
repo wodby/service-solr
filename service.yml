@@ -2,7 +2,6 @@ name: solr
 icon: solr
 type: search
 title: Solr
-hostname: solr
 containers:
 - name: solr
   image: wodby/solr
