@@ -2,19 +2,6 @@ name: solr
 icon: solr
 type: search
 title: Solr
-containers:
-- name: solr
-  image: wodby/solr
-  env:
-  - name: ZK_HOST
-    value: '{{links.zookeeper.host}}'
-  - name: SOLR_CLOUD_PASSWORD
-    value: '{{password}}'
-    secret: true
-# make sure Kubernetes env var overridden with correct value to not break health check
-  - name: SOLR_PORT
-    value: '8983'
-
 options:
 - version: '9'
   tag: '9.10'
@@ -33,15 +20,6 @@ helm:
   source: oci://registry-1.docker.io/wodby/solr
   chart: oci://registry-1.docker.io/wodby/solr
   version: 0.1.0
-  configurations:
-  - container: solr
-    labels: podLabels
-    annotations: podAnnotations
-    env: envVars
-    resources: resources
-    volumes: extraVolumes
-    mounts: extraVolumeMounts
-
 links:
 - name: zookeeper
   title: ZooKeeper
@@ -54,14 +32,14 @@ links:
 tokens:
 - name: password
   generate:
-    regex: '[0-9a-z-]{32}'  
+    regex: '[0-9a-z-]{32}'
 
 volumes:
 - name: data
   title: Data
   optional: true
   size: 5
-  helm: 
+  helm:
     labels: persistence.labels
     values:
     - name: persistence.enabled
@@ -72,10 +50,35 @@ volumes:
 actions:
 - name: init
   title: Run init
-  args: 
+  args:
   - make
   - init
   - 'host={{service.host}}'
   - -f
-  - /usr/local/bin/actions.mk  
+  - /usr/local/bin/actions.mk
   type: post_deploy
+workloads:
+- id: main
+  kind: statefulset
+  primary: true
+  containers:
+  - name: solr
+    image: wodby/solr
+    env:
+    - name: ZK_HOST
+      value: '{{links.zookeeper.host}}'
+    - name: SOLR_CLOUD_PASSWORD
+      value: '{{password}}'
+      secret: true
+# make sure Kubernetes env var overridden with correct value to not break health check
+    - name: SOLR_PORT
+      value: '8983'
+
+    helm:
+      resources: resources
+      env: envVars
+      mounts: extraVolumeMounts
+  helm:
+    labels: podLabels
+    annotations: podAnnotations
+    volumes: extraVolumes
