@@ -4,7 +4,7 @@ type: search
 title: Solr
 options:
 - version: '9'
-  tag: '9.10'
+  tag: '9-5.4.1'
 endpoints:
 - name: solr
   ports:
