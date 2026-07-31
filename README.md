@@ -20,7 +20,7 @@ configuration for Solr.
 | --- | --- |
 | Service name | `solr` |
 | Type | Search service |
-| Versions | `9` by default |
+| Versions | `9` (default), `10` |
 | Workloads | `main` (StatefulSet), primary |
 | Containers | `solr` using `wodby/solr` |
 | Endpoints | `solr`: HTTP 8983 (main) |

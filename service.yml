@@ -5,6 +5,9 @@ title: Solr
 options:
 - version: '9'
   tag: '9-5.5.0'
+  default: true
+- version: '10'
+  tag: '10-5.5.0'
 endpoints:
 - name: solr
   ports:
