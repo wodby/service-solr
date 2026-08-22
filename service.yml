@@ -18,11 +18,16 @@ endpoints:
 labels:
 - solr
 
+deployment:
+  strategy: rolling
+  minReady: 10s
+  shutdownGracePeriod: 30s
+
 helm:
   name: wodby
   source: oci://registry-1.docker.io/wodby/solr
   chart: oci://registry-1.docker.io/wodby/solr
-  version: 0.1.2
+  version: 0.2.0
 links:
 - name: zookeeper
   title: ZooKeeper
