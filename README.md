@@ -26,7 +26,7 @@ configuration for Solr.
 | Endpoints | `solr`: HTTP 8983 (main) |
 | Service links | ZooKeeper, required |
 | Volumes | Data, 5 GB |
-| Helm | chart `oci://registry-1.docker.io/wodby/solr`; version `0.1.2` |
+| Helm | chart `oci://registry-1.docker.io/wodby/solr`; version `0.2.1` |
 | Configuration | 1 generated or fixed tokens |
 | Operations | 1 actions |
 
