@@ -4,10 +4,10 @@ type: search
 title: Solr
 options:
 - version: '9'
-  tag: '9-5.5.0'
+  tag: 9-r0
   default: true
 - version: '10'
-  tag: '10-5.5.0'
+  tag: 10-r0
 endpoints:
 - name: solr
   ports:
@@ -27,7 +27,7 @@ helm:
   name: wodby
   source: oci://registry-1.docker.io/wodby/solr
   chart: oci://registry-1.docker.io/wodby/solr
-  version: 0.2.1
+  version: 0.2.2
 links:
 - name: zookeeper
   title: ZooKeeper

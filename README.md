@@ -20,13 +20,13 @@ configuration for Solr.
 | --- | --- |
 | Service name | `solr` |
 | Type | Search service |
-| Versions | `9` (default), `10` |
+| Versions | `9` by default; also available: `10` |
 | Workloads | `main` (StatefulSet), primary |
 | Containers | `solr` using `wodby/solr` |
 | Endpoints | `solr`: HTTP 8983 (main) |
 | Service links | ZooKeeper, required |
 | Volumes | Data, 5 GB |
-| Helm | chart `oci://registry-1.docker.io/wodby/solr`; version `0.2.1` |
+| Helm | chart `oci://registry-1.docker.io/wodby/solr`; version `0.2.2` |
 | Configuration | 1 generated or fixed tokens |
 | Operations | 1 actions |
 
