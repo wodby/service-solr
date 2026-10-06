@@ -2,6 +2,7 @@ name: solr
 icon: solr
 type: search
 title: Solr
+guidance: GUIDANCE.md
 options:
 - version: '9'
   tag: 9-r0
