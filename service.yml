@@ -5,10 +5,10 @@ title: Solr
 guidance: GUIDANCE.md
 options:
 - version: '9'
-  tag: 9-r2
+  tag: 9-r3
   default: true
 - version: '10'
-  tag: 10-r2
+  tag: 10-r3
 endpoints:
 - name: solr
   ports:
