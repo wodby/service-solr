@@ -83,6 +83,12 @@ workloads:
   containers:
   - name: solr
     image: wodby/solr
+    resources:
+      request:
+        cpu: 80
+        memory: 1232
+      limit:
+        memory: 2816
     env:
     - name: ZK_HOST
       value: '{{links.zookeeper.host}}'
