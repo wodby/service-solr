@@ -6,9 +6,11 @@ guidance: GUIDANCE.md
 options:
 - version: '9'
   tag: 9-r3
+  digest: sha256:c2924c4c0f9449faa39e065840fb05e00c6fc5f5f080ccf0778bf5fc6ade6acf
   default: true
 - version: '10'
   tag: 10-r3
+  digest: sha256:e7db19c13383d3c721cf45cd8d027ab1c3904a95949ae18b93dc3963f2963217
 endpoints:
 - name: solr
   ports:
