@@ -5,12 +5,12 @@ title: Solr
 guidance: GUIDANCE.md
 options:
 - version: '9'
-  tag: 9-r3
-  digest: sha256:c2924c4c0f9449faa39e065840fb05e00c6fc5f5f080ccf0778bf5fc6ade6acf
+  tag: 9-r4
+  digest: sha256:90c12ded1610b859d9e174cdf992a493a2ae1fba3574a876b45d178985882abd
   default: true
 - version: '10'
-  tag: 10-r3
-  digest: sha256:e7db19c13383d3c721cf45cd8d027ab1c3904a95949ae18b93dc3963f2963217
+  tag: 10-r4
+  digest: sha256:cf3e941b3a58861871584c2925d08900b644024961cb0532da28962db7ca4fed
 endpoints:
 - name: solr
   ports:
